@@ -1,0 +1,112 @@
+lava
+full square 16x16
+[232,48] [250,48] [232,66] [250,66]
+
+corner 1
+[232,86] [250,86] [232,104] [250,104]
+
+corner 2
+[232,124] [250,124] [232,142] [250,142]
+
+straightaway 1
+[232,162] [250,162] [232,180] [250,180]
+
+
+water
+straightaway 1
+[232,200] [250,200] [232,218] [250,218]
+
+full square
+[280,104] [298,104] [280,122] [298,122]
+
+corner 1
+[280,142] [298,142] [280,160] [298,160]
+
+corner 2
+[280,180] [298,180] [280,198] [298,198]
+
+
+
+tree 25x25
+[250,4]
+
+bush 17x13
+[250,32]
+
+big rock 25x25
+[280,4]
+
+small rock 17x13
+[280,32]
+
+big lava rock 25x25
+[280,56] (304, 80)
+
+small lava rock 17x13
+[280,84]
+
+
+brown spear knight 16x38
+[202,4] [222,4]
+
+silver spear knight 16x38
+[202,48] [222,48]
+
+crimson spear knight 16x38
+[202,92] [222,92]
+
+black axe knight 56x35
+[141,95] [162, 133]
+
+green dragon 39x38
+[15,4] [58,4]
+
+yellow dragon 49x47
+[15,48] [68,48]
+
+red dragon 59x58
+[15,100] [78,100]
+
+
+small fireball 8x12
+[100,4] [100,18]
+
+medium fireball 18x14
+[110,4] [110,20]
+
+large fireball 22x16
+[130,4] [130,24]
+
+
+small meat 12x7
+[154,4]
+
+medium meat 16x9
+[154,13]
+
+large meat 21x12
+[154,24]
+
+
+growth meter 74x21
+[14,160]
+
+growth bar front, middle, end 7x7
+[14,184] [23,184] [32,184]
+
+life counter 23x10
+[14,195]
+
+
+extra life 16x10
+[178,4] [178,16]
+
+arrow 16x12
+[178,28]
+
+
+multifireball 5 16x16
+[122,48] [138,48] [154,48] [170,48]
+
+multifireball 3 16x16
+[122,64] [138,64] [154,48] [170,48]
