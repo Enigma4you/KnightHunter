@@ -1,4 +1,4 @@
 KnightHunter
 ============
 
-Control a cute dragona s you fight off vicious knights.
+Control a cute dragona as you fight off vicious knights.
