@@ -17,7 +17,7 @@ class Pointer(pygame.sprite.Sprite):
         self.rect.center = (90, 405)
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.pointerImage = []

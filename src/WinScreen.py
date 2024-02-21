@@ -23,11 +23,11 @@ class WinScreen(pygame.sprite.Sprite):
         self.time = 0
         
     def loadImages(self):
-        imgMaster1 = pygame.image.load("Assets\Images\WinScreen1.gif")
+        imgMaster1 = pygame.image.load("src/Assets/Images/WinScreen1.gif")
         imgMaster1 = imgMaster1.convert()
-        imgMaster2 = pygame.image.load("Assets\Images\WinScreen2.gif")
+        imgMaster2 = pygame.image.load("src/Assets/Images/WinScreen2.gif")
         imgMaster2 = imgMaster2.convert()
-        imgMaster3 = pygame.image.load("Assets\Images\WinScreen3.gif")
+        imgMaster3 = pygame.image.load("src/Assets/Images/WinScreen3.gif")
         imgMaster3 = imgMaster3.convert()
         
         self.WinScreenImages1 = []

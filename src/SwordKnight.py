@@ -3,6 +3,7 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from builtins import range
 import pygame, Globals
 from Enemies import Enemies
 pygame.init()
@@ -35,7 +36,7 @@ class SwordKnight(Enemies):
         
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.swordKnightImages = []

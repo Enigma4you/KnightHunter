@@ -3,9 +3,24 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
-import pygame, Globals, Dragon, Boulders, ExtraLife, Field, Fireball, LargeMeat, SmallMeat, FlameCone, ScoreboardGUI
-import SpawnSprites, Waves, SpearKnight, AxeKnight
+
+import pygame, Globals, Waves
+from Dragon import *
+from Boulders import *
+from ExtraLife import *
+from Field import *
+from Fireball import *
+from LargeMeat import *
+from SmallMeat import *
+from FlameCone import *
+from ScoreboardGUI import *
+from SpawnSprites import *
+from SpearKnight import *
+from AxeKnight import *
+#import pygame, Globals, Dragon, Boulders, ExtraLife, Field, Fireball, LargeMeat, SmallMeat, FlameCone, ScoreboardGUI
+#import SpawnSprites, Waves, SpearKnight, AxeKnight
 pygame.init()
 
 def game():
@@ -22,19 +37,20 @@ def game():
 
     Globals.screen.blit(Globals.background, (0, 0))
     
-    field = Field.Field()
-    dragon = Dragon.Dragon()
-    growthBarOutline = ScoreboardGUI.GrowthBarGUI()
-    scoreboard = ScoreboardGUI.ScoreboardGUI()
+    field = Field()
+    dragon = Dragon()
+    growthBarOutline = GrowthBarGUI()
+    growthBarFill = GrowthBarFillGUI()
+    scoreboard = ScoreboardGUI()
     fieldSprite = pygame.sprite.Group(field)
     friendlySprites = pygame.sprite.Group(dragon)
-    scoreSprites = pygame.sprite.Group(scoreboard, growthBarOutline)
+    scoreSprites = pygame.sprite.Group(scoreboard, growthBarOutline, growthBarFill)
 
     
     if Globals.resume == False:
         Globals.score = 0
         Waves.spawnWave(Globals.currentWave)
-       # SpawnSprites.spawnGrowthBarFill(Globals.meat)
+        #SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, Globals.meat)
         Globals.clearSprites = False
         
     
@@ -53,9 +69,9 @@ def game():
                 #Globals.enemySprites.empty()
                 #Globals.gameGUI.empty()
             
-            print Globals.growthBar
-            print len(Globals.growthBar)
-            print Globals.growthBarFill
+            #print(Globals.growthBar)
+            #print(len(Globals.growthBar))
+            #print(Globals.growthBarFill)
             
                       
             if scoreboard.lives <= -1:
@@ -97,28 +113,31 @@ def game():
                 
         hitPowerUp = pygame.sprite.spritecollide(dragon, Globals.powerups, True)
         for powerUps in hitPowerUp: 
-            print powerUps.type
+            print(powerUps.type)
             if powerUps.type == Globals.powerUpSmallMeat:
-                print Globals.growth
-                #dragon.sndEat.play()
+                print(Globals.growth)
+                dragon.sndEat.play()
                 Globals.score += 500
                 Globals.meat += 1
-                #SpawnSprites.spawnGrowthBarFill(Globals.meat)
+                growthBarFill.checkMeat()
+                #SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, Globals.meat)
                 if Globals.meat >= 30:
                     Globals.meat = 30
                 scoreboard.score = Globals.score
                         
             elif powerUps.type == Globals.powerUpLargeMeat:
-                print Globals.growth
-                #dragon.sndEat.play()   
+                print(Globals.growth)
+                dragon.sndEat.play()   
                 Globals.score += 1250
                 Globals.meat += 2
+                growthBarFill.checkMeat()
+                #SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, Globals.meat)
                 if Globals.meat >= 30:
                     Globals.meat = 30
                 scoreboard.score = Globals.score
                     
             elif powerUps.type == Globals.powerUpExtraLife:
-                #dragon.sndExtraLife.play()
+                dragon.sndExtraLife.play()
                 Globals.score += 75
                 Globals.lives += 1
                 scoreboard.lives = Globals.lives
@@ -137,7 +156,7 @@ def game():
                 dragon.powerupactive = dragon.FLAMECONE5
                 
             else:
-                print "got a power up type I don't understand"
+                print("got a power up type I don't understand")
                         
         
         bounceEnemies = pygame.sprite.groupcollide(Globals.environment, Globals.enemySprites, False, False)
@@ -153,15 +172,15 @@ def game():
         if hitEnemies:
             for theEnemyHit in hitEnemies:
                 if theEnemyHit.type == Globals.enemySpearKnight:
-                    SpawnSprites.spawnEnemy(SpearKnight.SpearKnight, 1, 2)
+                    SpawnSprites.spawnEnemy(SpearKnight, 1, 2)
                 #elif theEnemyHit == SpearKnightMedium:
-                    #SpawnSprites.spawnEnemy(SpearKnight.SpearKnight, 1, 4, SpawnSprites)
+                    #SpawnSprites.spawnEnemy(SpearKnight, 1, 4, SpawnSprites)
                 #elif theEnemyHit == SpearKnightFast:
-                    #SpawnSprites.spawnEnemy(SpearKnight.SpearKnight, 1, 8, SpawnSprites)
+                    #SpawnSprites.spawnEnemy(SpearKnight, 1, 8, SpawnSprites)
                 else:
-                    print theEnemyHit
-                    print theEnemyHit.type
-                    print "enemy spawn error"
+                    print(theEnemyHit)
+                    print(theEnemyHit.type)
+                    print("enemy spawn error")
                     
                 Globals.lives -= 1
                 Globals.meat /= 2
@@ -174,10 +193,10 @@ def game():
                 for enemyBurned in burnEnemies:
                     Globals.score += 3000
                     scoreboard.score = Globals.score
-                    #fireball.sndKill.play()
+                    fireball.sndKill.play()
                     fireball.kill()
-                    SpawnSprites.spawnIten(SmallMeat.SmallMeat, 1, enemyBurned.x, enemyBurned.y)
-                    #SpawnSprites.spawnItem(SmallMeat.SmallMeat, 1, enemyBurned.x, enemyBurned.y)
+                    #SpawnSprites.spawnItem(SmallMeat, 1)
+                    SpawnSprites.spawnIten(SmallMeat, 1, enemyBurned.x, enemyBurned.y)
                     
         for fireball in Globals.fireballs:        
             burnEnvironment = pygame.sprite.spritecollide(fireball, Globals.environment, False)
@@ -186,7 +205,7 @@ def game():
                     theEnvironment.kill()
                     Globals.score += 50
                     scoreboard.score = Globals.score
-                    #fireball.sndKill.play()
+                    fireball.sndKill.play()
                     fireball.kill()
                 elif theEnvironment.type == Globals.environmentBoulder:
                     fireball.kill()
@@ -207,7 +226,8 @@ def game():
                 Waves.spawnWave(Globals.currentWave)
             
         
-        SpawnSprites.spawnGrowthBarFill(ScoreboardGUI.GrowthBarFillGUI, Globals.meat)
+        #SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, Globals.meat)
+
         fieldSprite.update()
         Globals.fireballs.update()
         Globals.environment.update()
@@ -222,8 +242,8 @@ def game():
         Globals.environment.draw(Globals.screen)
         Globals.enemySprites.draw(Globals.screen)
         friendlySprites.draw(Globals.screen)
-        Globals.gameGUI.draw(Globals.screen)
         scoreSprites.draw(Globals.screen)
+        Globals.gameGUI.draw(Globals.screen)
         Globals.powerups.update()
         
         pygame.display.flip()

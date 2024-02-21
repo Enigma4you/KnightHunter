@@ -4,6 +4,7 @@ Created on Feb 27, 2013
 @author: OWNER
 '''
 
+from builtins import range
 import pygame, Globals
 from PowerUp import PowerUp
 pygame.init()
@@ -25,7 +26,7 @@ class FlameCone5(PowerUp):
         self.type = Globals.powerUpFlameCone5
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet05.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet05.gif")
         imgMaster = imgMaster.convert()
         
         self.flameCone5Images = []
@@ -83,7 +84,7 @@ class FlameCone3(PowerUp):
         self.type = Globals.powerUpFlameCone3
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet05.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet05.gif")
         imgMaster = imgMaster.convert()
         
         self.flameCone3Images = []

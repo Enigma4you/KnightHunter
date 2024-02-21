@@ -4,7 +4,9 @@ Created on Aug 1, 2010
 @author: OWNER
 '''
 
-import pygame, Globals, GameOverScreen
+import pygame, Globals
+from GameOverScreen import *
+#import pygame, Globals, GameOverScreen
 pygame.init()
 
 def gameover():

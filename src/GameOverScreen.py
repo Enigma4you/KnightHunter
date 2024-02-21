@@ -10,7 +10,7 @@ pygame.init()
 class GameOverScreen(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("Assets\Images\GameOver.gif")
+        self.image = pygame.image.load("src/Assets/Images/GameOver.gif")
         self.image = self.image.convert()
         self.rect = self.image.get_rect()
         

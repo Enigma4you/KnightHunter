@@ -3,6 +3,7 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
 import pygame, Globals, SpawnSprites
 pygame.init()              
@@ -42,13 +43,13 @@ class GrowthBarGUI(pygame.sprite.Sprite):
         
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet08.gif")
         imgMaster = imgMaster.convert()
         
         self.growthBarImages1 = []
 
-        imgSize1 = (48, 15)
-        offset1 = (4, 162)
+        imgSize1 = (72, 21)
+        offset1 = (15, 160)
         
         tmpImg = pygame.Surface(imgSize1)
         tmpImg.blit(imgMaster, (0, 0), (offset1, imgSize1))
@@ -58,8 +59,8 @@ class GrowthBarGUI(pygame.sprite.Sprite):
         
         
     def update(self):
-        self.rect.centerx = 30
-        self.rect.centery = 10
+        self.rect.centerx = 40
+        self.rect.centery = 26
 
   
         
@@ -75,17 +76,21 @@ class GrowthBarFillGUI(pygame.sprite.Sprite):
         
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet08.gif")
         imgMaster = imgMaster.convert()
         
         self.growthFillImages1 = []
         self.growthFillImages2 = []
         self.growthFillImages3 = []
         
-        imgSize1 = (4, 4)
-        offset1 = (4, 180)
-        offset2 = (10, 180)
-        offset3 = (16, 180)
+        imgSize1 = (7, 7)
+        #imgSize1 = (4, 4)
+        offset1 = (14, 184)
+        offset2 = (23, 184)
+        offset3 = (32, 184)
+        #offset1 = (4, 180)
+        #offset2 = (10, 180)
+        #offset3 = (16, 180)
         
         tmpImg = pygame.Surface(imgSize1)
         tmpImg.blit(imgMaster, (0, 0), (offset1, imgSize1))
@@ -106,30 +111,32 @@ class GrowthBarFillGUI(pygame.sprite.Sprite):
         self.growthFillImages3.append(tmpImg)
    
     def checkMeat(self):
-        print self.meat%10
+        print(self.meat%10)
         if self.meat%10 == 0:
-            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI.GrowthBarFillGUI,self.meat)
+            Globals.growthBar.empty()
+            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI,self.meat)
         elif self.meat%10 == 1:
             self.loadImages()
-            self.image = self.growthFillImages1
+            self.image = self.growthFillImages1[0]
             self.rect = self.image.get_rect()
-            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI.GrowthBarFillGUI, self.meat)
+            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, self.meat)
         elif self.meat%10 == 9:
             self.loadImages()
-            self.image = self.growthFillImages3
+            self.image = self.growthFillImages3[0]
             self.rect = self.image.get_rect()
-            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI.GrowthBarFillGUI, self.meat)
+            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, self.meat)
         else:
             self.loadImages()
-            self.image = self.growthFillImages2
+            self.image = self.growthFillImages2[0]
             self.rect = self.image.get_rect()
-            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI.GrowthBarFillGUI, self.meat)
+            SpawnSprites.spawnGrowthBarFill(GrowthBarFillGUI, self.meat)
         
     def update(self):
-        print "before meat is"+self.meat
+        print("before meat is "+str(self.meat))
         self.meat = Globals.meat
-        print "after meat is"+self.meat
+        print("after meat is "+str(self.meat))
         self.checkMeat()
+
            
         #def spawnEnvironment(type, amount, startPosX, startPosY):
         #for i in range(amount):

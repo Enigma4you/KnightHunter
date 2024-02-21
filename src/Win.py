@@ -4,12 +4,13 @@ Created on Aug 1, 2010
 @author: OWNER
 '''
 
-import pygame, Globals, WinScreen
+import pygame, Globals
+from WinScreen import *
 pygame.init()
 
 def win():
     
-    winscreen = WinScreen.WinScreen()   
+    winscreen = WinScreen()   
     allSprites = pygame.sprite.Group(winscreen)
     
     keepGoing = True
@@ -38,7 +39,7 @@ def win():
                     Globals.growth = 1
                     Globals.gameOver = False
                     Globals.winScreen = False
-                    Globals.credits = True
+                    Globals.creditScreen = True
                     Globals.donePlaying = False
                     Globals.titleScreen = False
                     Globals.mainGame = False
@@ -46,6 +47,7 @@ def win():
                     clearSprites = True
                     Globals.startMenu = False
                     keepGoing = False
+                    break
                 
             
         allSprites.clear(Globals.screen, Globals.background)                   

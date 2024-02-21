@@ -3,7 +3,9 @@ Created on Jul 31, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
+from builtins import range
 import pygame, Globals, SpawnSprites
 pygame.init()
 
@@ -48,7 +50,7 @@ class Dragon(pygame.sprite.Sprite):
 
               
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.dragonImages1 = []
@@ -96,13 +98,16 @@ class Dragon(pygame.sprite.Sprite):
         
     def sound(self):
         if not pygame.mixer:
-            print "problem with sound"
+            print("problem with sound")
         else:
             pygame.mixer.init()
-            #self.sndEat = pygame.mixer.Sound("C:\Users\OWNER\Desktop\Assignment\QTR 8\Intermediate Scripting Languages\KnightHunter\src\Assets\Sound\eat1.ogg")
-            #self.sndFootstep = pygame.mixer.Sound("C:\Users\OWNER\Desktop\Assignment\QTR 8\Intermediate Scripting Languages\KnightHunter\src\Assets\Sound\footstep.ogg")
-            #self.sndFireball = pygame.mixer.Sound("C:\Users\OWNER\Desktop\Assignment\QTR 8\Intermediate Scripting Languages\KnightHunter\src\Assets\Sound\fireball.ogg")
-            self.sndExtraLife = pygame.mixer.Sound("C:\Users\OWNER\Desktop\Assignment\QTR 8\Intermediate Scripting Languages\KnightHunter\src\Assets\Sound\extralife.ogg")
+            self.sndEat = pygame.mixer.Sound("src/Assets/Sound/eat1.ogg")
+            self.sndFootstep = pygame.mixer.Sound("src/Assets/Sound/footstep.ogg")
+            self.sndFireball = pygame.mixer.Sound("src/Assets/Sound/fireball.ogg")
+            # with python 3.0, need to specify the string input one of 3 ways:
+            #   (r"Assets\Sound\extralife.ogg")
+            #   ("Assets\\Sound\\extralife.ogg")
+            self.sndExtraLife = pygame.mixer.Sound("src/Assets/Sound/extralife.ogg")
             
     def checkGrowth(self):
         #check growth to change sprite
@@ -129,7 +134,7 @@ class Dragon(pygame.sprite.Sprite):
                 self.pause += 1
                 if self.pause > self.delay:
                     self.pause = 0
-                    #self.sndFootstep.play() 
+                    self.sndFootstep.play() 
                     self.frame += 1
                     if self.frame >= len(self.dragonImages1):
                         self.frame = 0
@@ -148,7 +153,7 @@ class Dragon(pygame.sprite.Sprite):
                 self.pause += 1
                 if self.pause > self.delay:
                     self.pause = 0
-                    #self.sndFootstep.play() 
+                    self.sndFootstep.play() 
                     self.frame += 1
                     if self.frame >= len(self.dragonImages2):
                         self.frame = 0
@@ -165,7 +170,7 @@ class Dragon(pygame.sprite.Sprite):
                 self.pause += 1
                 if self.pause > self.delay:
                     self.pause = 0
-                    #self.sndFootstep.play() 
+                    self.sndFootstep.play() 
                     self.frame += 1
                     if self.frame >= len(self.dragonImages3):
                         self.frame = 0
@@ -214,7 +219,7 @@ class Dragon(pygame.sprite.Sprite):
             self.dx = .7
             self.dy = .7
         else:
-            print "something went wrong"
+            print("something went wrong with direction vector on Dragon")
         
     def checkKeys(self):
         keys = pygame.key.get_pressed()
@@ -243,7 +248,7 @@ class Dragon(pygame.sprite.Sprite):
         
     def dragonFire(self): 
         if self.firedelay%10 == 0:
-            #self.sndFireball.play()
+            self.sndFireball.play()
             if self.powerupactive == self.NORMAL:
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, Globals.dragonDirection)
             if self.powerupactive == self.FLAMECONE3:
@@ -252,7 +257,7 @@ class Dragon(pygame.sprite.Sprite):
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, Globals.dragonDirection)
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, tempDir1)
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, tempDir2)
-                print tempDir1
+                print(tempDir1)
             if self.powerupactive == self.FLAMECONE5:
                 tempDir1 = Globals.dragonDirection + 45
                 tempDir2 = Globals.dragonDirection + 30
@@ -267,12 +272,12 @@ class Dragon(pygame.sprite.Sprite):
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, tempDir4)
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, tempDir5)
                 SpawnSprites.fire(Globals.dragonCenterX, Globals.dragonCenterY, tempDir6)
-                print tempDir1
-                print tempDir2
-                print tempDir3
-                print tempDir4
-                print tempDir5
-                print tempDir6
+                #print(tempDir1)
+                #print(tempDir2)
+                #print(tempDir3)
+                #print(tempDir4)
+                #print(tempDir5)
+                #print(tempDir6)
                 
             self.firedelay += 1
         else:

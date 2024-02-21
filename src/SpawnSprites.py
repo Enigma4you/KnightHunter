@@ -3,8 +3,13 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
-import pygame, Globals, math, random, Fireball
+from builtins import str
+from builtins import range
+from Fireball import *
+import pygame, Globals, math, random
+#import pygame, Globals, math, random, Fireball
 from SpearKnight import  SpearKnight
 from AxeKnight import AxeKnight
 
@@ -12,7 +17,7 @@ pygame.init()
 
 def fire(CenterX, CenterY, Direction):
     global fireball
-    fireball = Fireball.Fireball()
+    fireball = Fireball()
     Globals.fireballs.add(fireball)
     fireball.rect.center = (CenterX, CenterY)
     fireball.dir = (Direction)
@@ -131,20 +136,20 @@ def spawnEnemy(type, amount, speed):
             else:
                 Globals.enemy.dir = 270
                 if thisEnemy == Globals.enemySpearKnight:
-                    print "this is a spear knight"
+                    print("this is a spear knight")
                     Globals.enemy.dx += speed
                     Globals.enemy.y = 0
                 elif thisEnemy == Globals.enemyAxeKnight:
-                    print "this is an axe knight"
+                    print("this is an axe knight")
                     Globals.enemy.dx += speed
                     Globals.enemy.y = speed#math.sin(speed)
                 else:
-                    print type
-                    print "the enemy is " + str(Globals.enemy)
-                    print "a spear knight looks like this " + str(Globals.enemySpearKnight)
-                    print "an axe knight looks like this " + str(Globals.enemyAxeKnight)
-                    print "thisEnemy looks like this " + str(thisEnemy)
-                    print "unknown enemy type"
+                    print(type)
+                    print("the enemy is " + str(Globals.enemy))
+                    print("a spear knight looks like this " + str(Globals.enemySpearKnight))
+                    print("an axe knight looks like this " + str(Globals.enemyAxeKnight))
+                    print("thisEnemy looks like this " + str(thisEnemy))
+                    print("unknown enemy type")
                 
             
         if sideOrTopSpawn == 1:
@@ -180,9 +185,9 @@ def spawnEnemy(type, amount, speed):
                 Globals.enemy.dy -= speed
             Globals.enemy.dir = 0
     
-    print stagger
-    print len(Globals.enemySprites) 
-    print "%d after stagger" %(amount) 
+    print(stagger)
+    print(len(Globals.enemySprites)) 
+    print("%d after stagger" %(amount)) 
             
 def spawnItem(type, amount):
     for i in range(amount):
@@ -219,16 +224,20 @@ def spawnEnvironment(type, amount, startPosX, startPosY):
         acc += 1
         
 def spawnGrowthBarFill(type, thisMeat):
-        #thisMeat = Globals.meat
+        thisMeat = Globals.meat
         if Globals.meat%10 == 0:
+            startPosX = 50
             Globals.growthBar.clear(Globals.screen,Globals.background)
         else:
-            acc = Globals.meat%10
+            acc = int(Globals.meat%10)
             startPosX = 50
-            startPosY = 30
+            startPosY = 70
             for i in range(acc):
-                print "growth is at"+str(acc)
-                startPosX = ((4*acc) + 50)
+                print("growth is at"+str(acc))
+                print("growth is at "+str(Globals.growthBar))
+                print("type is "+str(type))
+                print("posX "+ str(startPosX)+" posY "+str(startPosY))
+                startPosX = ((7*acc) + 50)
                 Globals.growthBarFill = str(type).lower
                 Globals.growthBarFill = type()
                 Globals.growthBar.add(Globals.growthBarFill)

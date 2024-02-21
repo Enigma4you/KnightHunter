@@ -3,6 +3,7 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
 import pygame
 pygame.init()
@@ -26,7 +27,7 @@ class MainMenuScreen(pygame.sprite.Sprite):
         self.rect.center = (400,300)
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\Title.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/Title.gif")
         imgMaster = imgMaster.convert()
         
         self.menuImages = []
@@ -45,7 +46,7 @@ class MainMenuScreen(pygame.sprite.Sprite):
     
     def update(self):
         self.checkKeys()
-        print self.state
+        print(self.state)
         #self.sound()
         
     def checkKeys(self):

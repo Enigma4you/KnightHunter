@@ -4,6 +4,7 @@ Created on Aug 1, 2010
 @author: OWNER
 '''
 
+from builtins import range
 import pygame, Globals
 from PowerUp import PowerUp
 pygame.init()
@@ -24,7 +25,7 @@ class ExtraLife(PowerUp):
         self.type = Globals.powerUpExtraLife
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.extraLifeImages = []

@@ -7,8 +7,11 @@ Created on May 12, 2010
 ---    the enemy waves of monsters to clear each round.
 ---    Obstacles and power ups make the game more interesting.
 '''
+from __future__ import print_function
 import pygame, Globals, Credits, Game, GameOver, Instructions, Title, PauseMenu, Win
 pygame.init()
+
+
 
 # ---------------------------------------------------------------------------------
 
@@ -25,7 +28,7 @@ def main():
     #global clearSprites
     
     while Globals.donePlaying != True:
-        print Globals.donePlaying
+        print(str(Globals.donePlaying))
         if Globals.titleScreen == True:
             Title.title()
         elif Globals.howToPlay == True:

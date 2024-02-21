@@ -4,6 +4,7 @@ Created on Aug 1, 2010
 @author: OWNER
 '''
 
+from builtins import range
 import pygame, Globals, MainMenuScreen, Pointer
 pygame.init()
 

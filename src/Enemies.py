@@ -5,6 +5,7 @@ Created on Aug 1, 2010
 '''
 
 import pygame, Globals
+
 pygame.init()
 
 # Enemy avatars

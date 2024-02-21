@@ -4,6 +4,7 @@ Created on Jul 20, 2011
 @author: Enigma4you
 '''
 
+from builtins import range
 import pygame, Globals
 from Enemies import Enemies
 pygame.init()
@@ -36,7 +37,7 @@ class AxeKnight(Enemies):
         
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.axeKnightImages = []

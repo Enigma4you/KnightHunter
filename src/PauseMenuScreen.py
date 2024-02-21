@@ -25,7 +25,7 @@ class PauseMenuScreen(pygame.sprite.Sprite):
         self.rect.center = (400,300)
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\StartMenu.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/StartMenu.gif")
         imgMaster = imgMaster.convert()
         
         self.menuImages = []

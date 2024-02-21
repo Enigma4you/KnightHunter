@@ -3,9 +3,14 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
-import pygame, Globals, Dragon
-from Projectile import Projectile
+from builtins import range
+import pygame, Globals
+# from Dragon import *
+from Projectile import *
+
+#import pygame, Globals, Dragon, Projectile
 pygame.init()
 
 class Fireball(Projectile):
@@ -47,7 +52,7 @@ class Fireball(Projectile):
         
         
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.fireballImages1 = []
@@ -85,10 +90,10 @@ class Fireball(Projectile):
     
     def sound(self):
         if not pygame.mixer:
-            print "problem with sound"
+            print("problem with sound")
         else:
             pygame.mixer.init()
-            self.sndKill = pygame.mixer.Sound("C:\Users\OWNER\Desktop\Assignment\QTR 8\Intermediate Scripting Languages\KnightHunter\src\Assets\Sound\spritedie.ogg")
+            self.sndKill = pygame.mixer.Sound("src/Assets/Sound/spritedie.ogg")
 
     def checkGrowth(self):
         if Globals.growth == 1:
@@ -98,7 +103,7 @@ class Fireball(Projectile):
         elif Globals.growth == 3:
             self.growth = 3
         else:
-            print "something is wrong with the fireball growth"
+            print("something is wrong with the fireball growth")
 
     
     def animation(self):

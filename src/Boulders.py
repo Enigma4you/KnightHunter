@@ -5,7 +5,7 @@ Created on Aug 1, 2010
 '''
 
 import pygame, Globals
-from Environment import Environment
+from Environment import *
 
 class Boulders(Environment):
     def __init__(self):
@@ -19,7 +19,7 @@ class Boulders(Environment):
 
        
     def loadImages(self):
-        imgMaster = pygame.image.load("Assets\Images\KnightHunterspritesheet04.gif")
+        imgMaster = pygame.image.load("src/Assets/Images/KnightHunterspritesheet04.gif")
         imgMaster = imgMaster.convert()
         
         self.boulderImages = []

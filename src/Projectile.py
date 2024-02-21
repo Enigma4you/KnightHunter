@@ -3,6 +3,7 @@ Created on Aug 1, 2010
 
 @author: OWNER
 '''
+from __future__ import print_function
 
 import pygame
 pygame.init()
@@ -39,4 +40,4 @@ class Projectile(pygame.sprite.Sprite):
             self.dx = .7
             self.dy = .7
         else:
-            print "something went wrong"
+            print("something went wrong")
